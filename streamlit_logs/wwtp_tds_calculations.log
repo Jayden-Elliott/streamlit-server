@@ -1,0 +1,232 @@
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+Entering pf.fetch()
+Query:         SELECT ts_start, Name, avg        FROM aggregates        WHERE name in (values'WWT_LI40109.PNT', 'WWT_FIC21108.MEAS')        AND ts between '14-Jun-23 12:02:12' and '14-Jun-23 13:02:12'        AND period = '01:00:00'                 AND request = 1
+Entering pf.set_server
+URL: http://wusgsmaspn11.basfad.basf.net/ProcessData/AtProcessDataREST.dll/SQL?<SQL ds="geis-pims-04" dso="" t="SQLplus" m="1000000" s="1"><![CDATA[        SELECT ts_start, Name, avg        FROM aggregates        WHERE name in (values'WWT_LI40109.PNT', 'WWT_FIC21108.MEAS')        AND ts between '14-Jun-23 12:02:12' and '14-Jun-23 13:02:12'        AND period = '01:00:00'                 AND request = 1]]></SQL>
+Entering df.rest()
+<requests_ntlm.requests_ntlm.HttpNtlmAuth object at 0x7fbc6b69a460>
+Leaving pf.rest()
+Dataframe returned
+Leaving pf.fetch()
+                   ts  WWT_FIC21108.MEAS  WWT_LI40109.PNT
+0 2023-06-14 12:02:12         299.598297        85.489388
+         SAMPLED_DATE PROCESS_UNIT  ... NUMERIC_ENTRY UNITS
+0 2023-06-13 21:00:00         WWTP  ...       26800.0   PPM
+1 2023-06-13 21:00:00         WWTP  ...       71100.0   PPM
+
+[2 rows x 8 columns]
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8515
+  External URL: http://208.127.110.243:8515
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8514
+  External URL: http://208.127.110.243:8514
+
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8533
+  External URL: http://208.127.110.243:8533
+
+Entering pf.fetch()
+Query:         SELECT ts_start, Name, avg        FROM aggregates        WHERE name in (values'WWT_LI40109.PNT', 'WWT_FIC21108.MEAS')        AND ts between '14-Jun-23 13:33:03' and '14-Jun-23 14:33:03'        AND period = '01:00:00'                 AND request = 1
+Entering pf.set_server
+URL: http://wusgsmaspn11.basfad.basf.net/ProcessData/AtProcessDataREST.dll/SQL?<SQL ds="geis-pims-04" dso="" t="SQLplus" m="1000000" s="1"><![CDATA[        SELECT ts_start, Name, avg        FROM aggregates        WHERE name in (values'WWT_LI40109.PNT', 'WWT_FIC21108.MEAS')        AND ts between '14-Jun-23 13:33:03' and '14-Jun-23 14:33:03'        AND period = '01:00:00'                 AND request = 1]]></SQL>
+Entering df.rest()
+<requests_ntlm.requests_ntlm.HttpNtlmAuth object at 0x7fd57d079460>
+Leaving pf.rest()
+Dataframe returned
+Leaving pf.fetch()
+                   ts  WWT_FIC21108.MEAS  WWT_LI40109.PNT
+0 2023-06-14 13:33:03         300.364563        84.740837
+         SAMPLED_DATE PROCESS_UNIT  ... NUMERIC_ENTRY UNITS
+0 2023-06-13 21:00:00         WWTP  ...       26800.0   PPM
+1 2023-06-13 21:00:00         WWTP  ...       71100.0   PPM
+
+[2 rows x 8 columns]
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://10.216.96.253:8533
+  External URL: http://208.127.110.243:8533
+

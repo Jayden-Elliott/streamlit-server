@@ -1,0 +1,142 @@
+Starting manager
+Started wwtp_tds_calculations with PID 4089575
+wwtp_tds_calculations stopped
+Manager stopped
+Started manager with PID 4090107Starting manager
+Started wwtp_tds_calculations with PID 4090112
+Refreshing
+{'wwtp_tds_calculations': {'venv': 'wwtp', 'path': '/home/elliotjd/wwtp/code/4_tds_calculations/tds_calculations.py', 'port': 8514}}
+wwtp_tds_calculations stopped
+Started wwtp_tds_calculations with PID 4090168
+wwtp_tds_calculations stopped
+Manager stopped
+Started manager with PID 4090367Starting manager
+wwtp_tds_calculations started with PID 4090372
+wwtp_tds_calculations stopped
+Manager stopped
+Started manager with PID 4090687
+Starting manager
+wwtp_tds_calculations started with PID 4090692
+wwtp_tds_calculations stopped
+Manager stopped
+Started manager with PID 4090963
+wwtp_tds_calculations started with PID 4090968
+wwtp_tds_calculations stopped
+Manager stopped
+Manager started with PID 4091305
+wwtp_tds_calculations started with PID 4091310
+wwtp_tds_calculations started with PID 4091382
+Refreshing
+wwtp_tds_calculations stopped
+wwtp_tds_calculations started with PID 4091452
+Refreshing
+wwtp_tds_calcs started with PID 4091906
+wwtp_tds_calcs started with PID 4091946
+wwtp_tds_calcs started with PID 4091984
+wwtp_tds_calcs started with PID 4092019
+wwtp_tds_calcs started with PID 4092063
+Refreshing
+wwtp_tds_calcs stopped
+wwtp_tds_calcs started with PID 4092100
+wwtp_tds_calculations stopped
+wwtp_tds_calcs stopped
+Manager stopped
+Manager started with PID 4092536
+wwtp_tds_calcs could not start; port 8516 already in use.wwtp_tds_calculations started with PID 4092542
+
+wwtp_tds_calculations stopped
+Manager stopped
+Manager started with PID 4093302
+wwtp_tds_calcs could not start. Port 8516 already in use.
+
+wwtp_tds_calculations started with PID 4093621
+Manager started with PID 4093618
+wwtp_tds_calculations stopped
+Manager stopped
+wwtp_tds_calcs could not start. Port 8516 already in use.
+wwtp_tds_calculations started with PID 4093982
+
+Manager started with PID 4093979
+wwtp_tds_calculations stopped
+Manager stopped
+wwtp_tds_calcs could not start. Port 8516 already in use.
+wwtp_tds_calculations started with PID 4094189
+
+Manager started with PID 4094177
+wwtp_tds_calculations stopped
+Manager stopped
+wwtp_tds_calcs could not start. Port 8516 already in use.
+wwtp_tds_calculations started with PID 4094255
+
+Manager started with PID 4094252
+wwtp_tds_calculations stopped
+Manager stopped
+wwtp_tds_calcs could not start. Port 8516 already in use.
+
+wwtp_tds_calculations could not start. Port 8504 already in use.
+
+Manager started with PID 4094339
+Refreshing
+Manager stopped
+wwtp_tds_calculations could not start. Port 8504 already in use.
+
+wwtp_tds_calcs could not start. Port 8516 already in use.
+
+Manager started with PID 4094477
+Manager stopped
+wwtp_tds_calculations could not start. Port 8504 already in use.
+
+wwtp_tds_calcs could not start. Port 8516 already in use.
+
+Manager started with PID 4094793
+Manager stopped
+wwtp_tds_calculations could not start. Port 8504 already in use.
+
+wwtp_tds_calcs could not start. Port 8516 already in use.
+
+Manager started with PID 4094879
+wwtp_tds_calculations could not start. Port 8504 already in use.
+
+wwtp_tds_calcs could not start. Port 8516 already in use.
+
+Manager started with PID 4094913
+wwtp_tds_calculations could not start. Port 8504 already in use.
+
+wwtp_tds_calcs could not start. Port 8516 already in use.
+
+Manager started with PID 4095033
+Refreshing
+wwtp_tds_calculations started with PID 4095137
+wwtp_tds_calcs started with PID 4095138
+wwtp_tds_calculations stopped
+wwtp_tds_calcs stopped
+Manager stopped
+wwtp_tds_calculations started with PID 4095286wwtp_tds_calcs started with PID 4095287
+
+Manager started with PID 4095283
+wwtp_tds_calculations stopped
+wwtp_tds_calcs stopped
+Manager stopped
+wwtp_tds_calculations started with PID 4095396
+wwtp_tds_calcs started with PID 4095397
+Manager started with PID 4095393
+Refreshing
+Refreshing
+wwtp_tds_calcs stopped
+wwtp_tds_calcs could not start. Port 8516 already in use.
+
+wwtp_tds_calculations stopped
+Manager stopped
+wwtp_tds_calculations started with PID 4102870
+wwtp_tds_calcs started with PID 4102871
+Manager started with PID 4102867
+Refreshing
+wwtp_tds_calculations stopped
+wwtp_tds_calculations started with PID 4102996
+wwtp_tds_calculations started with PID 4103205
+Refreshing
+wwtp_tds_calculations stopped
+wwtp_tds_calculations could not start. Port 8516 already in use.
+
+wwtp_tds_calcs stopped
+Manager stopped
