@@ -3,13 +3,11 @@ import socket
 import os
 import threading
 import subprocess
-import logging
 import pathlib
 import sys
 
-
-STREAMLIT_LOG_DIR = pathlib.Path(
-    "/home/elliotjd/streamlit_manager/streamlit_logs")
+DIR = pathlib.Path(__file__).parent.absolute()
+STREAMLIT_LOG_DIR = DIR / pathlib.Path("streamlit_logs/")
 
 
 def send_tcp(msg, socket_path):
@@ -30,11 +28,14 @@ def check_port(port):
 class App:
     def start(self):
         if check_port(self.port):
-            print(f"{self.name} could not start. Port {self.port} already in use.\n")
+            print(f"{self.name} could not start. \
+                  Port {self.port} already in use.\n")
             send_tcp(
-                f"{self.name} could not start. Port {self.port} already in use.\n", self.controller_socket_path)
+                f"{self.name} could not start. \
+                    Port {self.port} already in use.\n",
+                self.controller_socket_path)
             return False
-        venv_bin = f"/home/shared/venv/{self.venv}/bin"
+        venv_bin = pathlib.Path(self.venv) / pathlib.Path("bin")
         command = [f"{venv_bin}/python",
                    f"{venv_bin}/streamlit", "run", self.path]
         command += ["--server.port", str(self.port)]
@@ -42,8 +43,11 @@ class App:
         self.pid = subprocess.Popen(
             command, stdout=streamlit_log, stderr=streamlit_log).pid
         print(f"{self.name} started with PID {self.pid}")
-        send_tcp(json.dumps({"message_type": "pid_update",
-                 "name": self.name, "pid": self.pid}), self.manager_socket_path)
+        send_tcp(
+            json.dumps(
+                {"message_type": "pid_update", "name": self.name,
+                 "pid": self.pid}),
+            self.manager_socket_path)
         return True
 
     def main_loop(self):
@@ -79,17 +83,17 @@ class App:
                     continue
 
                 try:
-                    match msg["message_type"]:
-                        case "stop":
-                            if self.pid is not None:
-                                os.kill(self.pid, 9)
-                                self.pid = None
-                            print(f"{self.name} stopped")
-                            return
+                    if msg["message_type"] == "stop":
+                        if self.pid is not None:
+                            os.kill(self.pid, 9)
+                            self.pid = None
+                        print(f"{self.name} stopped")
+                        return
                 except Exception as e:
                     print(e)
 
-    def __init__(self, name, info, manager_socket_path, controller_socket_path):
+    def __init__(self, name, info,
+                 manager_socket_path, controller_socket_path):
         self.name = name
         self.path = info["path"]
         self.venv = info["venv"]
@@ -107,15 +111,15 @@ class App:
 class Manager:
     def start_app(self, name, info):
         self.apps[name] = info
-        app_thread = threading.Thread(
-            target=App, args=(name, info, self.socket_path, self.controller_socket_path))
+        app_thread = threading.Thread(target=App, args=(
+            name, info, self.socket_path, self.controller_socket_path))
         app_thread.start()
         self.apps[name]["thread"] = app_thread
         self.apps[name]["socket"] = f"/tmp/streamlit-{name}.sock"
         self.apps[name]["pid"] = None
 
     def start(self):
-        with open("apps.json") as f:
+        with open(DIR / pathlib.Path("apps.json")) as f:
             starting_apps = json.load(f)
 
         for name, info in starting_apps.items():
@@ -148,45 +152,49 @@ class Manager:
                 except json.decoder.JSONDecodeError:
                     continue
 
-                match msg["message_type"]:
-                    case "start":
-                        self.start()
+                if msg["message_type"] == "start":
+                    self.start()
 
-                    case "stop":
-                        self.stop()
-                        print("Manager stopped")
-                        exit(0)
+                elif msg["message_type"] == "stop":
+                    self.stop()
+                    print("Manager stopped")
+                    exit(0)
 
-                    case "refresh":
-                        print("Refreshing")
-                        with open("apps.json") as f:
-                            new_apps = json.load(f)
-                        for name, info in new_apps.items():
-                            if name not in self.apps:
-                                self.start_app(name, info)
-                            elif self.apps[name]["path"] == info["path"] and self.apps[name]["venv"] == info["venv"] and self.apps[name]["port"] == info["port"]:
-                                continue
-                            else:
-                                send_tcp(json.dumps(
-                                    {"message_type": "stop"}), self.apps[name]["socket"])
-                                self.apps[name]["thread"].join()
-                                self.start_app(name, info)
-
-                    case "status":
-                        pids = {name: info["pid"]
-                                for name, info in self.apps.items()}
-                        send_tcp(json.dumps(
-                            {"message_type": "status", "pids": pids}), msg["socket"])
-
-                    case "pid_update":
-                        if msg["name"] not in self.apps:
+                elif msg["message_type"] == "refresh":
+                    print("Refreshing")
+                    with open("apps.json") as f:
+                        new_apps = json.load(f)
+                    for name, info in new_apps.items():
+                        if name not in self.apps:
+                            self.start_app(name, info)
+                        elif self.apps[name]["path"] == info["path"] \
+                                and self.apps[name]["venv"] == info["venv"] \
+                                and self.apps[name]["port"] == info["port"]:
                             continue
-                        self.apps[msg["name"]]["pid"] = msg["pid"]
+                        else:
+                            send_tcp(
+                                json.dumps({"message_type": "stop"}),
+                                self.apps[name]["socket"])
+                            self.apps[name]["thread"].join()
+                            self.start_app(name, info)
 
-                    case "app_stopped":
-                        if msg["name"] not in self.apps:
-                            break
-                        self.apps.pop(msg["name"])
+                elif msg["message_type"] == "status":
+                    pids = {name: info["pid"]
+                            for name, info in self.apps.items()}
+                    send_tcp(
+                        json.dumps(
+                            {"message_type": "status", "pids": pids}),
+                        msg["socket"])
+
+                elif msg["message_type"] == "pid_update":
+                    if msg["name"] not in self.apps:
+                        continue
+                    self.apps[msg["name"]]["pid"] = msg["pid"]
+
+                elif msg["message_type"] == "app_stopped":
+                    if msg["name"] not in self.apps:
+                        break
+                    self.apps.pop(msg["name"])
 
     def __init__(self, socket_path, controller_socket_path):
         self.socket_path = socket_path

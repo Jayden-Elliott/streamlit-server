@@ -2,11 +2,6 @@
     "wwtp_tds_calculations": {
         "venv": "wwtp",
         "path": "/home/elliotjd/wwtp/code/4_tds_calculations/tds_calculations.py",
-        "port": 8516
-    },
-    "wwtp_tds_calcs": {
-        "venv": "wwtp",
-        "path": "/home/elliotjd/wwtp/code/4_tds_calculations/tds_calculations.py",
-        "port": 8517
+        "port": 8504
     }
 }
