@@ -35,13 +35,13 @@ def get_response(timeout):
 
 def start():
     if subprocess.call(
-        ["pgrep", "-f", "streamlit_manager_new.py"],
+        ["pgrep", "-f", "streamlit_manager.py"],
             stdout=subprocess.DEVNULL) == 0:
         print("Manager already running")
         exit(1)
     log = open(CONTROLLER_LOG_PATH, "a")
     pid = subprocess.Popen(
-        ["python", "-u", "streamlit_manager_new.py",
+        ["python", "-u", "streamlit_manager.py",
             MANAGER_SOCKET_PATH, CONTROLLER_SOCKET_PATH],
         stdout=log).pid
     log.write(f"Manager started with PID {pid}\n")
@@ -51,7 +51,7 @@ def start():
 
 def stop():
     if subprocess.call(
-        ["pgrep", "-f", "streamlit_manager_new.py"],
+        ["pgrep", "-f", "streamlit_manager.py"],
             stdout=subprocess.DEVNULL) != 0:
         print("Manager not running")
         exit(1)
@@ -61,7 +61,7 @@ def stop():
 
 def status():
     if subprocess.call(
-        ["pgrep", "-f", "streamlit_manager_new.py"],
+        ["pgrep", "-f", "streamlit_manager.py"],
             stdout=subprocess.DEVNULL) != 0:
         print("Manager not running")
         exit(1)
@@ -104,7 +104,7 @@ def status():
 
 def refresh():
     if subprocess.call(
-        ["pgrep", "-f", "streamlit_manager_new.py"],
+        ["pgrep", "-f", "streamlit_manager.py"],
             stdout=subprocess.DEVNULL) != 0:
         print("Manager not running")
         exit(1)
