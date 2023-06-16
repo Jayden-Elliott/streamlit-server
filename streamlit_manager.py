@@ -90,7 +90,8 @@ class Manager:
 
     def restart_app(self, name):
         self.apps[name]["stopped"] = True
-        self.apps[name]["thread"].join()
+        if "thread" in self.apps[name] and self.apps[name]["thread"].is_alive():
+            self.apps[name]["thread"].join()
         time.sleep(0.5)
         self.start_app(name)
 
@@ -129,38 +130,44 @@ class Manager:
             pass
 
         with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
-            sock.bind(self.socket_path)
-            sock.listen()
-            sock.settimeout(5)
-            while True:
-                try:
-                    client, addr = sock.accept()
-                    data = client.recv(4096)
-                except socket.timeout:
-                    continue
+            try:
+                sock.bind(self.socket_path)
+                sock.listen()
+                sock.settimeout(5)
+                while True:
+                    try:
+                        client, addr = sock.accept()
+                        data = client.recv(4096)
+                    except socket.timeout:
+                        continue
 
-                try:
-                    msg = json.loads(data)
-                except json.decoder.JSONDecodeError:
-                    continue
+                    try:
+                        msg = json.loads(data)
+                    except json.decoder.JSONDecodeError:
+                        continue
 
-                if msg["message_type"] == "start":
-                    self.start()
+                    if msg["message_type"] == "start":
+                        self.start()
 
-                elif msg["message_type"] == "stop":
-                    self.stop()
-                    print("Manager stopped")
-                    exit(0)
+                    elif msg["message_type"] == "stop":
+                        self.stop()
+                        print("Manager stopped")
+                        exit(0)
 
-                elif msg["message_type"] == "refresh":
-                    print("Refreshing")
-                    self.refresh()
+                    elif msg["message_type"] == "refresh":
+                        print("Refreshing")
+                        self.refresh()
 
-                elif msg["message_type"] == "status":
-                    self.status()
+                    elif msg["message_type"] == "status":
+                        self.status()
 
-                elif msg["message_type"] == "restart":
-                    self.restart_app(msg["app"])
+                    elif msg["message_type"] == "restart":
+                        self.restart_app(msg["app"])
+            except Exception as e:
+                print(e)
+                self.stop()
+                print("Manager stopped")
+                exit(0)
 
     def __init__(self, socket_path, controller_socket_path):
         self.socket_path = socket_path
