@@ -1,7 +1,12 @@
 {
     "wwtp_tds_calculations": {
-        "venv": "wwtp",
+        "venv": "/home/shared/venv/wwtp/",
         "path": "/home/elliotjd/wwtp/code/4_tds_calculations/tds_calculations.py",
-        "port": 8504
+        "port": 8514
+    },
+    "lab_data_explorer": {
+        "venv": "/home/shared/venv/lims/",
+        "path": "/home/shared/projects/lab-data-explorer/code/streamlit_app/Home.py",
+        "port": 8515
     }
 }
