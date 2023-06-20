@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "streamlit_site"
+version = "1.0.0"
+dependencies = [
+    "Flask"
+]
+requires-python = ">=3.8"

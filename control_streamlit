@@ -1,4 +1,0 @@
-#!/bin/bash
-source env/bin/activate
-python control_streamlit.py $1 $2
-deactivate

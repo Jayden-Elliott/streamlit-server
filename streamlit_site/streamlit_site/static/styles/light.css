@@ -1,0 +1,27 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+h1 {
+    color: rgb(49, 51, 63);
+}
+
+h2 {
+    color: rgb(0, 104, 201);
+}
+
+p {
+    color: rgb(49, 51, 63);
+}
+
+.status {
+    color: rgba(49, 51, 63, 0.6);
+}
+
+a {
+    color: rgb(0, 104, 201);
+}
+
+a:visited {
+    color: rgb(0, 104, 201);
+}

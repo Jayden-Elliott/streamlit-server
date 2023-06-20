@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <title>Streamlit Apps</title>
+    <link rel="shortcut icon" href="/static/images/favicon.png">
+    <script src="/static/script.js"></script>
+</head>
+
+<body style="display: none">
+    <h1>Streamlit Apps</h1>
+    {% for app in apps %}
+    {% if app.running %}
+    <h2><a href="{{app.url}}">{{app.name}}</a></h2>
+    {% else %}
+    <h2>{{app.name}}</h2>
+    {% endif %}
+    <p>
+        <span class="status">
+            {% if app.running %}Running{% else %}Stopped{% endif %}
+            {% if app.description %} | {% endif%}
+        </span>
+        {{app.description}}
+    </p>
+    {% endfor %}
+</body>
+
+</html>

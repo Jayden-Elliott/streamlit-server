@@ -1,0 +1,5 @@
+#!/bin/bash
+server_dir="$(dirname "$(realpath $0)")"
+source $server_dir/env/bin/activate
+python $server_dir/streamlit_controls/streamlit_controller.py $1 $2
+deactivate
