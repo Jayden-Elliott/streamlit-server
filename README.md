@@ -23,6 +23,7 @@ cd streamlit-server
 ```
 
 ### Install the Dependencies
+
 Create a virtual environment and install the dependencies.
 
 ```bash
@@ -33,6 +34,7 @@ pip install -r requirements.txt
 ```
 
 ### Install the Flask App
+
 Install the Flask app for the website from source using pip.
 
 ```bash
@@ -41,6 +43,7 @@ pip install -e .
 ```
 
 ### Update Configuration
+
 Open the `config.json` file and update the default port for the website if you wish. By default the website will run on port 5000.
 
 By default, the controller and process manager will communicate via TCP over ports 8499 and 8500, and new streamlit apps will be run on open ports increasing from 8501. If you wish to change these ports, edit the constants at the top of `streamlit-controls/controller.py`. 
@@ -49,6 +52,7 @@ By default, the controller and process manager will communicate via TCP over por
 > Stop the server before changing these ports. Changing the ports while the server is running will leave the process manager running in the background and inaccessible.
 
 ### Add Streamlit apps
+
 Streamlit apps can be automatically added to the server by adding a directory for each app to the `apps` directory. Each app must have an `app.py` file to be run by streamlit and a `venv` directory if it requires a virtual environment.
 
 ```
@@ -64,6 +68,7 @@ Streamlit apps can be automatically added to the server by adding a directory fo
 App directories and virtual environments located in other places can also be added to the server by manually providing them in `config.py`. However, the app to be run must still be named `app.py`.
 
 ### Run the Server
+
 Run the server from the project root directory.
 
 ```bash
@@ -72,6 +77,7 @@ Run the server from the project root directory.
 This will add all new apps from the `apps` directory to `config.py`, start the process manager and all apps in the background, and start the website on the specified port. The website is be available at `http://127.0.0.1:5000` by default.
 
 ### Control the Server
+
 The following arguments can be used after the `./control_streamlit` script to control the server.
 
 * `start`: Starts the server, process manager, all apps, and website.
@@ -80,3 +86,19 @@ The following arguments can be used after the `./control_streamlit` script to co
 * `status`: Prints all running Streamlit apps and their PIDs or whether they are stopped.
 * `stop <app-key>`: Stops the app specified by the key `app-key` (name of app directory) in `config.py`.
 * `restart <app-key>`: Restarts the app specified by the key `app-key` in `config.py`.
+
+### Customize Apps
+
+The attributes of any apps added automatically or manually to `config.json` can be customized. In `config.json`, each app must be an object within the `apps` object with the following attributes:
+
+```
+app_key: {
+    "name": "<name to appear on website>",
+    "url": "<url path to app>",
+    "dir": "<full path to app directory containing app.py>",
+    "venv": "<full path to virtual environment directory>",
+    "port": <int port to run app on>,
+    "description": "<description of app to appear on website>",
+    "restart_on_crash": <true or false whether to restart app if it crashes>
+}
+```
