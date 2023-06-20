@@ -69,7 +69,7 @@ Run the server from the project root directory.
 ```bash
 ./streamlit_controller start
 ```
-This will add all new apps from the `apps` directory to `config.py`, start the process manager and all apps in the background, and start the website on the specified port. The website is be available at `http://localhost:5000` by default.
+This will add all new apps from the `apps` directory to `config.py`, start the process manager and all apps in the background, and start the website on the specified port. The website is be available at `http://127.0.0.1:5000` by default.
 
 ### Control the Server
 The following arguments can be used after the `./control_streamlit` script to control the server.
