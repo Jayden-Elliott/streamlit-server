@@ -24,17 +24,11 @@ Create a virtual environment and install the dependencies.
 
 ```shell
 python3 -m venv env
-source venv/bin/activate
+source env/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Install the [Flask](https://github.com/pallets/flask) app for the website from source using pip.
-
-```shell
-cd streamlit_site
-pip install -e .
-```
 
 ### Adding Streamlit apps
 

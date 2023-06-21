@@ -119,6 +119,8 @@ def start():
     manager_running(exit_if_running=True)
 
     # Create log file if it doesn't exist
+    if not os.path.exists(DIR / Path("logs/")):
+        os.mkdir(DIR / Path("logs/"))
     if not os.path.exists(CONTROLLER_LOG_PATH):
         open(CONTROLLER_LOG_PATH, "w").close()
         os.chmod(CONTROLLER_LOG_PATH, 0o777)

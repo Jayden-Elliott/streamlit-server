@@ -1,6 +1,9 @@
 env/
 __pycache__/
-*.log
-apps/*
 *.egg-info
+logs/*
+!logs/.gitkeep
+apps/*
+!apps/.gitkeep
 config.json
+status.json

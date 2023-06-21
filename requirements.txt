@@ -9,3 +9,4 @@ pkg_resources==0.0.0
 toml==0.10.2
 Werkzeug==2.3.6
 zipp==3.15.0
+streamlit_site
