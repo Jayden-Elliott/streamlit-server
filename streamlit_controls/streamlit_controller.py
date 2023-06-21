@@ -53,6 +53,8 @@ def update_config():
     if not os.path.exists(DIR / Path("config.json")):
         os.system(f"touch {DIR / Path('config.json')}")
     config = json.load(open(DIR / Path("config.json"), "r"))
+    if "website_port" not in config:
+        config["website_port"] = 5000
 
     # Create apps object in config file if it doesn't exist
     if "apps" not in config:

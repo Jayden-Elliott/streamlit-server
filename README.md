@@ -4,11 +4,13 @@ Streamlit Server provides a way to run and manage many streamlit apps in the bac
 
 ## Get started
 
-1. [Installation](#installation)
-2. [Adding Streamlit apps](#adding-streamlit-apps)
-3. [Running the server](#running-the-server)
-4. [Configuration](#configuration)
-5. [Other features](#other-features)
+- [Streamlit Server](#streamlit-server)
+  - [Get started](#get-started)
+    - [Installation](#installation)
+    - [Adding Streamlit apps](#adding-streamlit-apps)
+    - [Running the Server](#running-the-server)
+    - [Configuration](#configuration)
+    - [Other features](#other-features)
 
 ### Installation
 
@@ -64,7 +66,7 @@ The `streamlit_controller` script takes the following arguments for controlling 
 
 * `start`: Starts the server, process manager, all apps, and website.
 * `stop`: Stops the server, process manager, all apps, and website.
-* `refresh`: Applies any changes to `config.py` with a restart to any app with changes or the website.
+* `refresh`: Restarts website or any apps that have with changes in `config.py` or that have stopped.
 * `status`: Prints all running Streamlit apps and their PIDs or whether they are stopped.
 * `stop <app-key>`: Stops the app specified by the key `app-key` (name of app directory) in `config.py`.
 * `restart <app-key>`: Restarts the app specified by the key `app-key` in `config.py`.
