@@ -1,16 +1,15 @@
-# Streamlit Server
+# Streamlit Server  <!-- omit from toc -->
 
 Streamlit Server provides a way to run and manage many streamlit apps in the background and host them all together on a convenient website. Since Streamlit requires separate processes for each app bound to different ports, Streamlit Server runs each app process in the background and embeds them in a Flask website run on a single port.
 
-## Get started
 
-- [Streamlit Server](#streamlit-server)
-  - [Get started](#get-started)
-    - [Installation](#installation)
-    - [Adding Streamlit apps](#adding-streamlit-apps)
-    - [Running the Server](#running-the-server)
-    - [Configuration](#configuration)
-    - [Other features](#other-features)
+## Get started  <!-- omit from toc -->
+
+- [Installation](#installation)
+- [Adding Streamlit apps](#adding-streamlit-apps)
+- [Running the Server](#running-the-server)
+- [Configuration](#configuration)
+- [Other features](#other-features)
 
 ### Installation
 
