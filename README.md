@@ -40,7 +40,7 @@ pip install -e .
 
 Streamlit apps can be automatically added to the server by adding a directory for each app to the `apps` directory. Each app must have an `app.py` file to be run by streamlit and a `venv` directory if it requires a virtual environment.
 
-```
+```shell
 ├── apps
 │   ├── <app-key1>
 │   │   ├── venv
@@ -77,7 +77,7 @@ The `streamlit_controller` script takes the following arguments for controlling 
 The website port and the attributes of any apps can be changed in `config.json`, which must have the following structure:
 
 
-```json
+```
 {
     "website_port": <int port to run website on>,
     "apps": {
