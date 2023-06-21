@@ -1,19 +1,16 @@
 # Streamlit Server
 
-Streamlit server provides a way to run and manage many streamlit apps in the background and host them all together on a convenient website.
+Streamlit Server provides a way to run and manage many streamlit apps in the background and host them all together on a convenient website. Since Streamlit requires separate processes for each app bound to different ports, Streamlit Server runs each app process in the background and embeds them in a Flask website run on a single port.
 
-## Get Started
+## Get started
 
-1. [Clone the repository](#clone-the-repository)
-2. [Install the dependencies](#install-the-dependencies)
-3. [Install the Flask app](#install-the-flask-app)
-4. [Update configuration](#update-configuration)
-5. [Add Streamlit apps](#add-streamlit-apps)
-6. [Run the server](#run-the-server)
-7. [Control the server](#control-the-server)
-8. [Customize apps](#customize-apps)
+1. [Installation](#installation)
+2. [Adding Streamlit apps](#adding-streamlit-apps)
+3. [Running the server](#running-the-server)
+4. [Configuration](#configuration)
+5. [Other features](#other-features)
 
-### Clone the Repository
+### Installation
 
 Ensure you have Python 3.8+ installed. Then clone this repository and enter the directory.
     
@@ -22,18 +19,14 @@ git clone https://github.com/Jayden-Elliott/streamlit-server.git
 cd streamlit-server
 ```
 
-### Install the Dependencies
-
 Create a virtual environment and install the dependencies.
 
 ```bash
-python3 -m venv venv
+python3 -m venv env
 source venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
-
-### Install the Flask App
 
 Install the Flask app for the website from source using pip.
 
@@ -42,16 +35,7 @@ cd streamlit_site
 pip install -e .
 ```
 
-### Update Configuration
-
-Open the `config.json` file and update the default port for the website if you wish. By default the website will run on port 5000.
-
-By default, the controller and process manager will communicate via TCP over ports 8499 and 8500, and new streamlit apps will be run on open ports increasing from 8501. If you wish to change these ports, edit the constants at the top of `streamlit-controls/controller.py`. 
-> **Note**
->
-> Stop the server before changing these ports. Changing the ports while the server is running will leave the process manager running in the background and inaccessible.
-
-### Add Streamlit apps
+### Adding Streamlit apps
 
 Streamlit apps can be automatically added to the server by adding a directory for each app to the `apps` directory. Each app must have an `app.py` file to be run by streamlit and a `venv` directory if it requires a virtual environment.
 
@@ -67,7 +51,7 @@ Streamlit apps can be automatically added to the server by adding a directory fo
 
 App directories and virtual environments located in other places can also be added to the server by manually providing them in `config.py`. However, the app to be run must still be named `app.py`.
 
-### Run the Server
+### Running the Server
 
 Run the server from the project root directory.
 
@@ -76,9 +60,7 @@ Run the server from the project root directory.
 ```
 This will add all new apps from the `apps` directory to `config.py`, start the process manager and all apps in the background, and start the website on the specified port. The website is be available at `http://127.0.0.1:5000` by default.
 
-### Control the Server
-
-The following arguments can be used after the `./control_streamlit` script to control the server.
+The `streamlit_controller` script takes the following arguments for controlling the server:
 
 * `start`: Starts the server, process manager, all apps, and website.
 * `stop`: Stops the server, process manager, all apps, and website.
@@ -87,18 +69,35 @@ The following arguments can be used after the `./control_streamlit` script to co
 * `stop <app-key>`: Stops the app specified by the key `app-key` (name of app directory) in `config.py`.
 * `restart <app-key>`: Restarts the app specified by the key `app-key` in `config.py`.
 
-### Customize Apps
+### Configuration
 
-The attributes of any apps added automatically or manually to `config.json` can be customized. In `config.json`, each app must be an object within the `apps` object with the following attributes:
+The website port and the attributes of any apps can be changed in `config.json`, which must have the following structure:
+
 
 ```
-app_key: {
-    "name": "<name to appear on website>",
-    "url": "<url path to app>",
-    "dir": "<full path to app directory containing app.py>",
-    "venv": "<full path to virtual environment directory>",
-    "port": <int port to run app on>,
-    "description": "<description of app to appear on website>",
-    "restart_on_crash": <true or false whether to restart app if it crashes>
+{
+    "website_port": <int port to run website on>,
+    "apps": {
+        <app-key>: {
+            "name": "<name to appear on website>",
+            "url": "<url path to app>",
+            "dir": "<full path to app directory containing app.py>",
+            "venv": "<full path to virtual environment directory>",
+            "port": <int port to run app on>,
+            "description": "<description of app to appear on website>",
+            "restart_on_crash": <true or false whether to restart app if it crashes>
+        } ...
+    }
 }
 ```
+
+Automatically added apps will have the `name` and `url` attributes will assigned value `app_key`, the `port` attribute assigned the next available port starting from 8501, `restart_on_crash` assigned `true`, and `description` assigned an empty string.
+
+By default, the controller and process manager will communicate via TCP over ports 8499 and 8500, and new streamlit apps added automatically will be given open ports increasing from 8501. If you wish to change these ports, edit the constants at the top of `streamlit-controls/controller.py`. 
+> **Note**
+>
+> Stop the server before changing these ports. Changing the ports while the server is running will leave the process manager running in the background and inaccessible.
+
+### Other features
+
+Log files for each app are stored in `logs/<app-key>.log` and store the command line output of the app. The log file for the controller and process manager is stored in `logs/controller.log`.
