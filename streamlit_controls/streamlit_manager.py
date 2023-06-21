@@ -134,7 +134,7 @@ class Manager:
         port = json.load(open(DIR / Path("config.json"), "r"))["website_port"]
 
         # Create log file for website if it doesn't exist
-        streamlit_site_log_path = DIR / Path("logs/streamlit_site.log")
+        streamlit_site_log_path = DIR / Path("logs/website.log")
         if not os.path.exists(streamlit_site_log_path):
             open(streamlit_site_log_path, "w").close()
             os.chmod(streamlit_site_log_path, 0o777)

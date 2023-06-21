@@ -101,4 +101,4 @@ By default, the controller and process manager will communicate via TCP over por
 
 ### Other features
 
-Log files for each app are stored in `logs/<app-key>.log` and store the command line output of the app. The log file for the controller and process manager is stored in `logs/controller.log`.
+Log files for each app are stored in `logs/<app-key>.log` and store the command line output of the app. The log files for the controller/process manager and website are stored in `logs/controller.log` and `logs/website.log` respectively.
