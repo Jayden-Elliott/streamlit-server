@@ -10,6 +10,7 @@ import time
 DIR = Path(__file__).parent.parent.absolute()
 
 
+# Send TCP message to socket
 def send_tcp(msg, socket_port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         try:
@@ -20,6 +21,7 @@ def send_tcp(msg, socket_port):
         return True
 
 
+# Check if port is open
 def check_port(port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         return sock.connect_ex(("localhost", port)) == 0
