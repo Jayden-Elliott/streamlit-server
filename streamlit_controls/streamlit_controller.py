@@ -67,22 +67,21 @@ def update_config():
     used_ports = [app["port"] for app in apps.values()]
 
     # Add new apps in apps directory to config file with default values
-    for app in os.listdir(DIR / Path("apps/")):
-        if app in apps:
+    for app_key in os.listdir(DIR / Path("apps/")):
+        if app_key in apps:
             continue
         venv = ""
-        if os.path.exists(DIR / Path(f"apps/{app}/env")):
-            venv = f"{DIR / Path(f'apps/{app}/env')}"
-        if not os.path.exists(DIR / Path(f"apps/{app}/app.py")):
-            print(
-                f"Streamlit file for {app} not found. Please provide it in the app directory in a file named \"app.py\".")
-            continue
+        if os.path.exists(DIR / Path(f"apps/{app_key}/env")):
+            venv = f"{DIR / Path(f'apps/{app_key}/env')}"
+        app = ""
+        if os.path.exists(DIR / Path(f"apps/{app_key}/app.py")):
+            app = f"{DIR / Path(f'apps/{app_key}/app.py')}"
         port = get_open_port(used_ports)
         used_ports.append(port)
-        apps[app] = {
+        apps[app_key] = {
             "name": app,
             "url": f"/{app}/",
-            "dir": f"{DIR / Path('apps')}/{app}",
+            "app": app,
             "venv": venv,
             "port": port,
             "description": "",

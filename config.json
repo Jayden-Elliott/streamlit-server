@@ -1,4 +1,23 @@
 {
     "website_port": 5000,
-    "apps": {}
+    "apps": {
+        "tds_calculations": {
+            "name": "TDS Calculations",
+            "url": "/tds_calculations/",
+            "dir": "/home/elliotjd/streamlit_server/apps/tds_calculations",
+            "venv": "/home/shared/venv/wwtp",
+            "port": 8506,
+            "description": "Dashboard for waste water treatment plant TDS calculations.",
+            "restart_on_crash": true
+        },
+        "tds_calculations2": {
+            "name": "Test",
+            "url": "/tds_calculations2/",
+            "dir": "/home/elliotjd/streamlit_server/apps/tds_calculations2",
+            "venv": "",
+            "port": 8509,
+            "description": "",
+            "restart_on_crash": true
+        }
+    }
 }

@@ -75,8 +75,18 @@ class Manager:
             self.write_stop_status(name)
             return
 
+        # Check if app file exists and return if not
+        if self.apps[name]["path"] == "" or not os.path.exists(
+                self.apps[name]["path"]):
+            message = f"{name} could not start. App file {self.apps[name]['path']} not found.\n"
+            if self.apps[name]["path"] == "":
+                message = f"{name} could not start. Please provide an app file in \"config.json\".\n"
+            self.log_and_send(streamlit_log_path, message)
+            self.write_stop_status(name)
+            return
+
         # Check if virtual environment exists and return if not
-        if not os.path.exists(
+        if self.apps[name]["venv"] == "" or not os.path.exists(
                 Path(self.apps[name]["venv"]) / Path("bin")):
             message = f"{name} could not start. Virtual environment {self.apps[name]['venv']} not found.\n"
             if self.apps[name]["venv"] == "":
@@ -87,13 +97,14 @@ class Manager:
 
         # Start app process and redirect stdout and stderr to log file
         venv_bin = Path(self.apps[name]["venv"]) / Path("bin")
-        app_dir = Path(self.apps[name]["dir"])
+        app_path = Path(self.apps[name]["app"])
         command = [f"{venv_bin}/python", f"{venv_bin}/streamlit", "run",
-                   app_dir / Path("app.py")]
+                   str(app_path)]
         command += ["--server.port", str(self.apps[name]["port"])]
         streamlit_log = open(streamlit_log_path, "a")
         self.apps[name]["pid"] = subprocess.Popen(
-            command, stdout=streamlit_log, stderr=streamlit_log, cwd=app_dir).pid
+            command, stdout=streamlit_log, stderr=streamlit_log,
+            cwd=app_path.parent).pid
         self.write_pid_status(name)
         message = f"{name} started at URL path {self.apps[name]['url']} with PID {self.apps[name]['pid']}.\n"
         self.print_and_send(message)

@@ -32,7 +32,7 @@ pip install -r requirements.txt
 
 ### Adding Streamlit apps
 
-Streamlit apps can be automatically added to the server by adding a directory for each app to the `apps` directory. Each app must have an `app.py` file to be run by streamlit and a `venv` directory if it requires a virtual environment.
+Streamlit apps can be automatically added to the server by adding a directory for each app to the `apps` directory. For the app to be automatically added, it must have an `app.py` file to be run by streamlit and a `venv` directory if it requires a virtual environment.
 
 ```
 ├── apps
@@ -46,7 +46,7 @@ Streamlit apps can be automatically added to the server by adding a directory fo
 │   │   └── ...   
 ```
 
-App directories and virtual environments located in other places can also be added to the server by manually providing them in `config.py`. However, the app to be run must still be named `app.py`.
+App directories and virtual environments located in other places or named differently can also be added to the server by manually providing them in `config.py`.
 
 ### Running the Server
 
@@ -78,7 +78,7 @@ The website port and the attributes of any apps can be changed in `config.json`,
         <app-key>: {
             "name": <name to appear on website>,
             "url": <url path to app>,
-            "dir": <full path to app directory containing app.py>,
+            "app": <full path to python file to be run by Streamlit>,
             "venv": <full path to virtual environment directory>,
             "port": <int port to run app on>,
             "description": <description of app to appear on website>,
