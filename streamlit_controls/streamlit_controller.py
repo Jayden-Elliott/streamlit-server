@@ -79,8 +79,8 @@ def update_config():
         port = get_open_port(used_ports)
         used_ports.append(port)
         apps[app_key] = {
-            "name": app,
-            "url": f"/{app}/",
+            "name": app_key,
+            "url": f"/{app_key}/",
             "app": app,
             "venv": venv,
             "port": port,

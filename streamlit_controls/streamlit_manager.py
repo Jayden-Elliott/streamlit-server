@@ -76,10 +76,10 @@ class Manager:
             return
 
         # Check if app file exists and return if not
-        if self.apps[name]["path"] == "" or not os.path.exists(
-                self.apps[name]["path"]):
-            message = f"{name} could not start. App file {self.apps[name]['path']} not found.\n"
-            if self.apps[name]["path"] == "":
+        if self.apps[name]["app"] == "" or not os.path.exists(
+                self.apps[name]["app"]):
+            message = f"{name} could not start. App file {self.apps[name]['app']} not found.\n"
+            if self.apps[name]["app"] == "":
                 message = f"{name} could not start. Please provide an app file in \"config.json\".\n"
             self.log_and_send(streamlit_log_path, message)
             self.write_stop_status(name)
@@ -211,7 +211,7 @@ class Manager:
 
                 # Skip apps with no changes
                 if self.apps[name]["port"] == info["port"] \
-                        and self.apps[name]["dir"] == info["dir"] \
+                        and self.apps[name]["app"] == info["app"] \
                         and self.apps[name]["venv"] == info["venv"]:
                     continue
 
