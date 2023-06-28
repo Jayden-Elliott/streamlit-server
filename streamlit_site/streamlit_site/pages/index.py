@@ -16,6 +16,6 @@ def show_index():
             vals["running"] = False
         vals["running"] = True if status[name]["pid"] else False
     context = {
-        "apps": apps.values()
+        "apps": sorted(apps.values(), key=lambda x: x["name"])
     }
     return flask.render_template("index.html", **context)
