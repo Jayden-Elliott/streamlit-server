@@ -7,3 +7,4 @@ apps/*
 !apps/.gitkeep
 config.json
 status.json
+.vscode/
